@@ -1,4 +1,12 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+//Load Composer's autoloader
+require 'vendor/autoload.php';
+
 // Check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
@@ -24,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail->Port = 587;
 
     // Sender details (the company will send the email)
-    $mail->setFrom('your-email@domain.com', 'Your Company');
+    $mail->setFrom('balaji.imtex2025@gmail.com', 'BAPL');
     $mail->addAddress($contact_email); // Send email to customer
 
     // Email content
@@ -41,8 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <p>We have attached a PDF document with more details about our company for your reference.</p>";
 
     // Path to the company's PDF file (the PDF file provided by the company)
-    $pdf_path = 'c:\Users\enn07\Desktop\dc.pdf'; // Replace with your actual path to the PDF file
-    $mail->addAttachment($pdf_path, 'Company_Information.pdf'); // Attach the company's PDF
+    //$pdf_path = 'c:\Users\enn07\Desktop\dc.pdf'; // Replace with your actual path to the PDF file
+    //$mail->addAttachment($pdf_path, 'Company_Information.pdf'); // Attach the company's PDF
 
     // Send the email
     if ($mail->send()) {
